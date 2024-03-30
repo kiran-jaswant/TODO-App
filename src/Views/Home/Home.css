@@ -1,11 +1,20 @@
 .App-title{
     text-align: center;
+    padding: 30px;
+    margin-top: -10px;
 }
+.todo-body{
+    background-color: #ffe6cc;
+    margin-top:0;
+    height: 800px;
+    
+   /* background-image: radial-gradient(circle, #e99d30, #e99028, #e88322, #e7751e, #e6661c);}*/}
 .input-box-container{
     display: flex;
     justify-content: center;
     margin-top: 30px;
     margin-bottom: 40px;
+    
     
 }
 .input{
@@ -21,19 +30,30 @@
 .add-icon{
     width: 48px;
     cursor: pointer;
+    background-color: aliceblue;
+    border-radius: 50%;
+    padding: 2px;
 }
 .error-message{
     text-align: center;
     color: red;
     font-size: 20px;
 
+
 }
 .task-container{
     display: flex;
     flex-direction:column;
     align-items:center;
-    height:400px;
+    height:480px;
     overflow-y: scroll;
+    border:2px solid black;
+    margin-left: 440px;
+    margin-right: 440px;
+    border-radius: 10px;
+    padding:10px;
+    background-color: whitesmoke;
+
     
 }
 .choice{

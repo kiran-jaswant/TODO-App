@@ -44,8 +44,8 @@ function Home() {
     }
   }, []);
   return (
-    <div>
-      <h1 className='App-title'>Todo List:{choice}</h1>
+    <div className='todo-body'> 
+      <h1 className='App-title'>Todo List</h1>
       <div className='input-box-container'>
         <input type='text'
           placeholder='Enter a Task to be add '
