@@ -7,6 +7,7 @@ function Home() {
   const [tasks, setTasks] = useState([]);
   const [newtask, setNewtask] = useState('');
   const [error, setError] = useState();
+  const [choice,setChoice]=useState();
 
   function addTask() {
     if (newtask === '') {
@@ -15,13 +16,19 @@ function Home() {
     } else {
       setError();
     }
-    setTasks([newtask, ...tasks])
+    setTasks([
+      {
+        title:newtask,
+        category:choice
+      }, ...tasks])
     setNewtask('')
   }
+
   const deleteTask=(index)=>{
     const newtasks=tasks;
     newtasks.splice(index,1);
-    setTasks([...newtasks])
+    setTasks([...newtasks]);
+    localStorage.setItem('tasks',JSON.stringify(newtasks));
 
   }
   useEffect(() => {
@@ -38,7 +45,7 @@ function Home() {
   }, []);
   return (
     <div>
-      <h1 className='App-title'>Todo List</h1>
+      <h1 className='App-title'>Todo List:{choice}</h1>
       <div className='input-box-container'>
         <input type='text'
           placeholder='Enter a Task to be add '
@@ -46,6 +53,14 @@ function Home() {
           value={newtask}
           onChange={(e) => { setNewtask(e.currentTarget.value) }}
         ></input>
+        <select className='choice' value={choice} onChange={(e)=>{setChoice(e.target.value)}}>
+          <option value='choice'>Category</option>
+          <option value='Study📚'>Study📚</option>
+          <option value='Shopping🛍️'>Shopping🛍️</option>
+          <option value='Goal 🎯'>Goal 🎯</option>
+          <option value='Hobbies🎨'>Hobbies🎨</option>
+          <option value='Health🏃‍♀️'>Health🏃‍♀️</option>
+        </select>
         <img src={Addicon}
           className='add-icon'
           onClick={addTask}
@@ -55,8 +70,9 @@ function Home() {
       <div className='task-container'>
         {
           tasks.map((task, i) => {
+            const{title,category}=task;
             return (
-              <Taskcard task={task} key={i} deleteTask={deleteTask}></Taskcard>
+              <Taskcard title={title}  category={category} key={i} deleteTask={deleteTask}></Taskcard>
             )
           })
         }

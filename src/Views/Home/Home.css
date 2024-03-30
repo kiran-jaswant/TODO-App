@@ -36,3 +36,10 @@
     overflow-y: scroll;
     
 }
+.choice{
+    border: 2px solid black;
+    border-radius: 20px;
+    padding:10px;
+    margin-right: 10px;
+    font-size: 17px;
+}
